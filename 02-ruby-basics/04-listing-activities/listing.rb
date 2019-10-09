@@ -34,5 +34,6 @@ Located in #{activity["city"]}
 Duration of #{activity["duration"]} minutes
 For #{activity["participants"]} participants
 Charged #{activity["price"]}€ per participant
+Total cost:#{activity["price"]*activity["participants"]} euros
 ---"
 end
