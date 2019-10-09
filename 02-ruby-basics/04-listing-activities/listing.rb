@@ -31,7 +31,7 @@ activities = [
 activities.each do |activity|
 puts "#{activity["name"]} [#{activity["category"].upcase}]
 Located in #{activity["city"]}
-Duration of #{activity["duration"]} minutes
+Duration of #{activity["duration"]/60} h #{activity["duration"]%60} min
 For #{activity["participants"]} participants
 Charged #{activity["price"]}€ per participant
 Total cost:#{activity["price"]*activity["participants"]} euros
