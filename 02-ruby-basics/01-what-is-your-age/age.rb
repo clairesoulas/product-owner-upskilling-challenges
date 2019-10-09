@@ -8,5 +8,8 @@ puts "What is your birth year?"
 birth_year = gets.chomp.to_i
 
 age = 2019 - birth_year
-
-puts "Thanks. So I guess you're #{age} years old."
+if age <= 0
+  puts "Sorry that would be a real strange birth year."
+else
+  puts "Thanks. So I guess you're #{age} years old."
+end
