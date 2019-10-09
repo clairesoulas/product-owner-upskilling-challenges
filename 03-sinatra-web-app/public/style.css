@@ -9,7 +9,7 @@ h2{
 
 }
 .card{
-  background-color:rgb(150, 37, 179);
+  background-color:#b1e8ed;
   border-radius: 10px;
   padding:10px;
   margin:10px;
@@ -19,5 +19,9 @@ h2{
   font-size:20px;
 }
 .chip{
-  border-radius:5px;
+  border-radius: 5px;
+  background-color:#edb5f5;
+  margin: 0 50px 0 0;
+  width: fit-content;
+  padding:5px;
 }
