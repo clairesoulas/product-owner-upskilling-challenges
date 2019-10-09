@@ -3,12 +3,12 @@ categories = ["Adventure", "Sport", "Visits", "Workshops", "Cultural", "Food"
 
 # TODO: your code goes here
 puts "What extra category would you like to add?"
-extra_category = gets.chomp
+extra_category = gets.chomp.capitalize
 categories = categories << extra_category
 categories = categories.sort
-puts"Thank you, so currently, the categories are:"
+puts"Thank you, so currently, the categories of activities are:"
 categories.each do |category|
-  puts "#{category}"
+  puts "- #{category}"
 end
 
 size_categories = categories.size
