@@ -9,6 +9,26 @@
   </head>
   <body>
     <h1>Activities</h1>
-    <p>TODO: display all the activities</p>
+    <div class="container">
+    <% @activities.each do |activity| %>
+    <div class="card">
+        <h3>
+          <%=  activity["name"] %>
+        </h3>
+        <p class="chip">
+          <%= activity["category"].upcase %>
+        </p>
+        <p> Durée :
+          <%= activity["duration"] %>
+        <P>
+        <p>
+          <%= activity["participants"] %> participants
+        <P>
+        <p>
+          <%= activity["price"] %> euros
+        </p>
+      </div>
+    <% end %>
+    </div>
   </body>
 </html>

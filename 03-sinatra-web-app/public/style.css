@@ -1,1 +1,23 @@
 /* Add any styling you want */
+.container{
+  display:flex;
+}
+h1{
+
+}
+h2{
+
+}
+.card{
+  background-color:rgb(150, 37, 179);
+  border-radius: 10px;
+  padding:10px;
+  margin:10px;
+  flex-basis:300px;
+}
+.h3{
+  font-size:20px;
+}
+.chip{
+  border-radius:5px;
+}
