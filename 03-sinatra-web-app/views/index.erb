@@ -8,29 +8,24 @@
     <%= stylesheet '/style.css' %>
   </head>
   <body>
-  <div class="banner">
-    <h1>Activities</h1>
-    <h2>Au choix pour votre teambuilding</h2>
+  <div class="container">
+    <div class="banner">
+      <h1>Activities</h1>
+      <h2>Au choix pour votre teambuilding</h2>
     </div>
-    <div class="container">
+    <div class="cards">
       <% @activities.each do |activity| %>
-      <div class="card">
-          <h3>
-            <%= activity["name"] %>
-          </h3>
-          <p class="chip">
-            <%= activity["category"].upcase %>
-          </p>
-          <p> Durée : <%= activity["duration"] %> minutes
-          </P>
-          <p>
-            <%= activity["participants"] %> participants
-          </P>
-          <p>
-            <%= activity["price"] %> euros
-          </p>
+        <div class="card">
+          <h3><%= activity["name"] %></h3>
+          <p class="chip"><%= activity["category"].upcase %></p>
+          <img src="<%= activity["photo_url"]%>"/>
+          <p><%= activity["city"] %></p>
+          <p>Durée : <%= activity["duration"] %> minutes</P>
+          <p><%= activity["participants"] %> participants</P>
+          <p><%= activity["price"] %> euros</p>
         </div>
       <% end %>
-      </div>
+    </div>
+  </div>
   </body>
 </html>
