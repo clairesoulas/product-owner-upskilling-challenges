@@ -8,8 +8,10 @@
     <%= stylesheet '/style.css' %>
   </head>
   <body>
+  <div class="banner">
     <h1>Activities</h1>
     <h2>Au choix pour votre teambuilding</h2>
+    </div>
     <div class="container">
       <% @activities.each do |activity| %>
       <div class="card">
@@ -19,7 +21,7 @@
           <p class="chip">
             <%= activity["category"].upcase %>
           </p>
-          <p> Durée : <%= activity["duration"] %>
+          <p> Durée : <%= activity["duration"] %> minutes
           </P>
           <p>
             <%= activity["participants"] %> participants
