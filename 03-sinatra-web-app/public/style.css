@@ -1,32 +1,42 @@
 /* Add any styling you want */
+body {
+  font-family:Arial;
+  }
 h1 {
-  font-size:60px;
-}
+    font-size:40px;
+    padding-left:10px;
+  }
 
-h2 {
-  font-size:40px;
-}
+  h2 {
+    font-size:30px;
+    font-style:italic;
+    padding-left:10px;
+  }
 
-.container {
-  display:flex;
-}
+ .container {
+   display:flex;
+ }
 
-.card {
-  background-color:#b1e8ed;
-  border-radius: 10px;
-  padding:10px;
-  margin:10px;
-  flex-basis:300px;
-}
+ .card {
+   background-color:#e6f8f9;
+   border-radius: 10px;
+   padding:10px;
+   margin:10px;
+   flex-basis:300px;
+ }
+ p{
+   margin:10px;
+ }
 
-.card h3 {
-  font-size:30px;
-}
+ .card h3 {
+   font-size:30px;
+   border-bottom:solid 1px;
+   margin: 10px;
+ }
 
-.chip {
-  border-radius: 5px;
-  background-color:#edb5f5;
-  margin: 0 50px 0 0;
-  width: fit-content;
-  padding:5px;
-}
+ .chip {
+   border-radius: 5px;
+   background-color:#b1e8ed;
+   width: fit-content;
+   padding:5px;
+ }
