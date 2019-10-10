@@ -37,10 +37,11 @@ h1 {
 
  .card {
    background-color:#e6f8f9;
-   border-radius: 10px;
-   padding:10px;
+   border-radius:10px;
+   padding:0;
    margin:10px;
    flex-basis:250px;
+   box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);
  }
  p{
    margin:10px;
@@ -49,18 +50,32 @@ h1 {
  .card h3 {
    font-size:30px;
    border-bottom:solid 1px grey;
-   margin: 10px;
-   padding-bottom:15px;
- }
-
+   padding: 20px 10px 20px 10px;
+   background-color: white;
+   margin: 0px;
+}
  .chip {
   border-radius: 5px;
-  background-color:#b1e8ed;
+  background-color:rgba(0, 0, 255, .5);
   width: fit-content;
    padding:5px;
   font-weight:850;
   font-size:14px;
-  margin-top: -25px;
+  margin-top: -15px;
   margin-left: 25px;
-  color: #edb5f5;
  }
+.icon {
+  height:45px !important;
+  width:45px;
+  border-radius:5px;
+  padding-left:10px;
+  margin-right:10px;
+}
+.flex{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.right{
+  position:right;
+}

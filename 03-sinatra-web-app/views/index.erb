@@ -19,10 +19,12 @@
           <h3><%= activity["name"] %></h3>
           <p class="chip"><%= activity["category"].upcase %></p>
           <img src="<%= activity["photo_url"]%>"/>
-          <p><%= activity["city"] %></p>
-          <p>Durée : <%= activity["duration"] %> minutes</P>
-          <p><%= activity["participants"] %> participants</P>
-          <p><%= activity["price"] %> euros</p>
+          <div class="flex">
+            <p><%= activity["city"] %></p>
+            <p class="right"><%= activity["price"] %> euros</p>
+          </div>
+            <p><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</span>
+            <p><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["participants"] %> participants</span>
         </div>
       <% end %>
     </div>
