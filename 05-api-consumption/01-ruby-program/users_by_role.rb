@@ -19,12 +19,16 @@ users_of_role = JSON.parse(response.body)
 count = users_of_role["data"]["items"][0]["usersCount"]
 role_id = users_of_role["data"]["items"][0]["id"]
 
-puts "Total: #{count} users found"
+
 
 url_users = "https://wagon.ilucca-demo.net/api/v3/users"
 
 response_users = RestClient.get(url_users, "params" => {"fields" => "firstName,lastName,department.id,jobTitle","rolePrincipal.id" => "#{role_id}"}, "Authorization" => "Lucca application=#{token}")
 
 response_users = JSON.parse(response_users.body)
-
 p response_users
+users = response_users["data"]["items"]
+puts "Total: #{count} users found"
+users.each do |user|
+  puts "One more #{user["jobTitle"]}"
+end
