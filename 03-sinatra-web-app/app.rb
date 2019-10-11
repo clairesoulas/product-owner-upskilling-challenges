@@ -14,7 +14,7 @@ get "/" do
       "duration" => 120, #Integer
       "participants" => 12, #Integer
       "price" => 20, #Integer
-      "photo_url" => "https://cdn.pixabay.com/photo/2018/02/12/22/37/mask-3149305__340.jpg"
+      "photo_url" => "https://cdn.pixabay.com/photo/2014/03/25/16/28/mask-297200__340.png"
     },
     {
       "name" => "Escape game", #String
