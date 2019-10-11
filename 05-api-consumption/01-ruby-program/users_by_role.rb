@@ -12,10 +12,19 @@ token = "18afcfb8-697b-4742-b726-418269485cee"
 headers = {"Authorization" => "Lucca application=#{token}"}
 url = "https://wagon.ilucca-demo.net/api/v3/roles"
 
-response = RestClient.get(url, "params" => {"fields" => "Name,UsersCount,Users","Name" => "like,#{role_name}"}, "Authorization" => "Lucca application=#{token}")
+response = RestClient.get(url, "params" => {"fields" => "Name,Id,UsersCount","Name" => "like,#{role_name}"}, "Authorization" => "Lucca application=#{token}")
 
 users_of_role = JSON.parse(response.body)
 
 count = users_of_role["data"]["items"][0]["usersCount"]
+role_id = users_of_role["data"]["items"][0]["id"]
 
 puts "Total: #{count} users found"
+
+url_users = "https://wagon.ilucca-demo.net/api/v3/users"
+
+response_users = RestClient.get(url_users, "params" => {"fields" => "firstName,lastName,department.id,jobTitle","rolePrincipal.id" => "#{role_id}"}, "Authorization" => "Lucca application=#{token}")
+
+response_users = JSON.parse(response_users.body)
+
+p response_users
