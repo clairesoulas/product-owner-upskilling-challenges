@@ -14,6 +14,8 @@ url = "https://wagon.ilucca-demo.net/api/v3/users"
 response = RestClient.get(url, "params" => {"fields" => "firstName,lastName,department,jobTitle,mail","lastName" => "#{name[1]}","firstName" => "#{name[0]}"}, "Authorization" => "Lucca application=#{token}")
 
 users = JSON.parse(response.body)
-puts "#{users["data"]["items"][0]["firstName"]} #{users["data"]["items"][0]["lastName"]} (#{users["data"]["items"][0]["mail"]})"
-puts "#{users["data"]["items"][0]["jobTitle"]}"
-puts "For #{users["data"]["items"][0]["department"]["name"]}"
+user = users["data"]["items"][0]
+
+puts "#{user["firstName"]} #{user["lastName"]} (#{user["mail"]})"
+puts "#{user["jobTitle"]}"
+puts "For #{user["department"]["name"]}"
