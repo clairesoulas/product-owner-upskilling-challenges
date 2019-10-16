@@ -27,7 +27,7 @@ end
 
 post "/" do
   url = "https://team-building-api.cleverapps.io/v2/activities"
-  response = RestClient.get(url, "params" => {"search" => "#{params[:name]}"})
+  response = RestClient.get(url, "params" => {"search" => "#{params[:name]}", "category" => "#{params[:categories]}"})
   activities = JSON.parse(response.body)
 
   @activities = activities["activities"]

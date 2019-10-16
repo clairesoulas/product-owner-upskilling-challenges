@@ -15,12 +15,18 @@
       <h2>Au choix pour votre teambuilding</h2>
     </div>
     <div class="flex space-around">
-        <a class="btn" href="?location=Paris">Activités à Paris</a>
-        <a class="btn" href="?location=Nantes">Activités à Nantes</a>
-        <a class="btn" href="/">Toutes</a>
+        <p><a class="btn" href="?location=Paris">Activités à Paris</a></p>
+        <p><a class="btn" href="?location=Nantes">Activités à Nantes</a></p>
+        <p><a class="btn" href="/">Toutes</a></p>
         <form method="POST" action="/">
-          <p>Rechercher par nom<input type="text" name="name"></p>
-          <input type="submit">
+          <p>Search by activity name : <input type="text" name="name"></p>
+          <p>Category:
+            <select name="categories">
+              <option value="Adventure">Adventure</option>
+              <option value="Food">Food</option>
+            </select>
+          </p>
+          <p><input class="btn" type="submit"></p>
         </form>
     </div>
     <div class="cards">
