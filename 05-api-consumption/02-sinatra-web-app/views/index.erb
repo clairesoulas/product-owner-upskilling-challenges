@@ -13,9 +13,15 @@
     <div class="banner">
       <h1>Activities</h1>
       <h2>Au choix pour votre teambuilding</h2>
-      <a class="btn" href="?location=Paris">Activités à Paris</a>
-      <a class="btn" href="?location=Nantes">Activités à Nantes</a>
-      <a class="btn" href="/">Toutes</a>
+    </div>
+    <div class="flex space-around">
+        <a class="btn" href="?location=Paris">Activités à Paris</a>
+        <a class="btn" href="?location=Nantes">Activités à Nantes</a>
+        <a class="btn" href="/">Toutes</a>
+        <form method="POST" action="/">
+          <p>Rechercher par nom<input type="text" name="name"></p>
+          <input type="submit">
+        </form>
     </div>
     <div class="cards">
       <% @activities.each do |activity| %>
@@ -29,7 +35,7 @@
           </div>
             <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</p>
             <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["participants_count"] %> participants</p>
-            <a class="btn" href="activities/<%=activity["id"]%>">View activity full page</a>
+            <p class="right"><a class="btn" href="activities/<%=activity["id"]%>">View</a></p>
         </div>
       <% end %>
     </div>

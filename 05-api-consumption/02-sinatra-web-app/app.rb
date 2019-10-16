@@ -24,3 +24,13 @@ get "/activities/:activity_id" do
   @activity = activities["activity"]
   erb :show
 end
+
+post "/" do
+  url = "https://team-building-api.cleverapps.io/v2/activities"
+  response = RestClient.get(url, "params" => {"search" => "#{params[:name]}"})
+  activities = JSON.parse(response.body)
+
+  @activities = activities["activities"]
+
+  erb :index
+end
