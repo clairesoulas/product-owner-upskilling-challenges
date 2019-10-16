@@ -15,13 +15,10 @@
       <h2>Au choix pour votre teambuilding</h2>
     </div>
     <div class="flex space-around">
-        <p><a class="btn" href="?location=Paris">Activités à Paris</a></p>
-        <p><a class="btn" href="?location=Nantes">Activités à Nantes</a></p>
-        <p><a class="btn" href="/">Toutes</a></p>
         <form method="GET" action="/">
-          <p>Search by activity name : <input type="text" name="name" value ="<%= @name_searched %>">
+          <p class="label">Search by activity name : <input type="text" name="name" value ="<%= @name_searched %>">
           </p>
-          <p>Category:
+          <p class="label">Category:
             <select name="category">
               <% @categories.each do |category|%>
                 <option value="<%= category%>" <%= "selected" if category == @selected_category %>>
@@ -30,7 +27,15 @@
               <% end %>
             </select>
           </p>
-          <p><input class="btn" type="submit"></p>
+          <P class="label">Filter by city
+            <input type ="radio" id="Paris" name="location" value="Paris" <%= "checked" if @selected_location =="Paris" %>>
+            <label for="Paris">Paris</label>
+            <input type ="radio" id="Nantes" name="location" value="Nantes" <%= "checked" if @selected_location =="Nantes" %>>
+            <label for="Nantes">Nantes</label>
+            <input type ="radio" id="All" name="location" value="" <%= "checked" if @selected_location =="" %>>
+            <label for="All">Tous les lieux</label>
+          </p>
+          <input class="btn" type="submit" value="Apply filters">
         </form>
     </div>
     <div class="cards">

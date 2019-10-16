@@ -22,11 +22,16 @@ get "/" do
   @categories=@categories.uniq
 
   url = "https://team-building-api.cleverapps.io/v2/activities"
-  response = RestClient.get(url, "params"=>{"city"=> params["location"], "search" => "#{params[:name]}", "category" => "#{params[:category]}"})
+  response = RestClient.get(url, "params"=>{"city"=> params[:location], "search" => params[:name], "category" => params[:category]})
 
   activities = JSON.parse(response.body)
 
   @selected_category = params[:category]
+
+  if params[:location] == nil
+    then params[:location] = ""
+  end
+  @selected_location = params[:location]
 
   # Input search is empty or reusing value provided by user
   if params[:name] == nil
