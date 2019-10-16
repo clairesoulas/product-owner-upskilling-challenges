@@ -18,12 +18,16 @@
         <p><a class="btn" href="?location=Paris">Activités à Paris</a></p>
         <p><a class="btn" href="?location=Nantes">Activités à Nantes</a></p>
         <p><a class="btn" href="/">Toutes</a></p>
-        <form method="POST" action="/">
-          <p>Search by activity name : <input type="text" name="name"></p>
+        <form method="GET" action="/">
+          <p>Search by activity name : <input type="text" name="name" value ="<%= @name_searched %>">
+          </p>
           <p>Category:
-            <select name="categories">
-              <option value="Adventure">Adventure</option>
-              <option value="Food">Food</option>
+            <select name="category">
+              <% @categories.each do |category|%>
+                <option value="<%= category%>" <%= "selected" if category == @selected_category %>>
+                  <%= category %>
+                </option>
+              <% end %>
             </select>
           </p>
           <p><input class="btn" type="submit"></p>
