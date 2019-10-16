@@ -26,14 +26,14 @@ h1 {
     text-decoration: none;
   }
   .container {
-    width:900px;
+    width:1200px;
     margin:0 auto;
   }
 .banner{
   background-image: url(https://cdn.pixabay.com/photo/2018/02/14/10/28/people-3152585__340.jpg);
   background-repeat:no-repeat;
   background-size:cover;
-  width:900px;
+  width:1200px;
   height:300px;
   display: flex;
   flex-direction: column;
@@ -48,23 +48,27 @@ h1 {
  .card img{
    max-width:100%;
    height:auto;
-   max-height:150px;
  }
 
  .card {
    border-radius:10px;
    padding:0;
    margin:10px;
-   flex-basis:250px;
+   flex-basis:450px;
    box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);
  }
 
  .card h3 {
-   font-size:20px;
-   border-bottom:solid 1px grey;
-   padding: 20px 10px 20px 10px;
+   font-size:16px;
    background-color: white;
    margin: 0px;
+}
+.header {
+  padding: 10px 5px 10px 5px;
+  background-color: white;
+  margin: 0px;
+  height:50px;
+  border-bottom:solid 1px grey;
 }
  .chip {
   border-radius: 5px;
@@ -99,6 +103,9 @@ h1 {
  float:right;
 }
 
+.btn a{
+  font-size:16px;
+}
 .btn{
   background-color:rgb(127, 127, 255);
   border-radius:5px;

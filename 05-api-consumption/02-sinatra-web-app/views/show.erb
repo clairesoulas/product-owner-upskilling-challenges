@@ -13,7 +13,13 @@
       <div>
         <h1><%= @activity["name"]%></h1>
          <img src="<%= @activity["photo_url"]%>"/>
-        <h2>Activité disponible à <%= @activity["city"] %></h2>
+        <h2>Activité <%= @activity["category"] %> disponible à <%= @activity["city"] %></h2>
+          <div class="flex center space-between">
+            <p><%= @activity["city"] %></p>
+            <p class="right"><%= @activity["price"] %> euros</p>
+          </div>
+          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= @activity["duration"] %> minutes</p>
+          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= @activity["participants_count"] %> participants</p>
       </div>
     </div>
   </body>

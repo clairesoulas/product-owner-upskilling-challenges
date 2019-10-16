@@ -41,16 +41,18 @@
     <div class="cards">
       <% @activities.each do |activity| %>
         <div class="card">
-          <h3><%= activity["name"] %></h3>
+          <div class="header">
+            <h3><%= activity["name"] %></h3>
+          </div>
           <p class="chip"><%= activity["category"].upcase %></p>
           <img src="<%= activity["photo_url"]%>"/>
           <div class="flex center space-between">
             <p><%= activity["city"] %></p>
             <p class="right"><%= activity["price"] %> euros</p>
           </div>
-            <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</p>
-            <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["participants_count"] %> participants</p>
-            <p class="right"><a class="btn" href="activities/<%=activity["id"]%>">View</a></p>
+          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</p>
+          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["participants_count"] %> participants</p>
+          <p class="right btn"><a href="activities/<%=activity["id"]%>">View</a></p>
         </div>
       <% end %>
     </div>
