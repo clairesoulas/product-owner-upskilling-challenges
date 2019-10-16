@@ -83,4 +83,8 @@ h1 {
 .right{
   position:right;
 }
+.btn{
+  text-decoration: none;
+  background-color:rgb(127, 127, 255);
+}
 /* Add any styling you want */
