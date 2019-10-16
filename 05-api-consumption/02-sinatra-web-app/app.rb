@@ -9,8 +9,7 @@ enable :static
 
 get "/" do
   url = "https://team-building-api.cleverapps.io/v2/activities"
-  puts "#{url}"
-  response = RestClient.get(url)
+  response = RestClient.get(url, "params"=>{"city"=>"#{params["location"]}"})
   activities = JSON.parse(response.body)
 
   @activities = activities["activities"]
@@ -18,9 +17,7 @@ get "/" do
 end
 
 get "/activities/:activity_id" do
-  #activity_id = "25"
   url = "https://team-building-api.cleverapps.io/v2/activities/#{params["activity_id"]}"
-  puts "#{url}"
   response = RestClient.get(url)
   activities = JSON.parse(response.body)
 
