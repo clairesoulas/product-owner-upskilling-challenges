@@ -18,6 +18,10 @@ end
 
 namespace "/v1" do
   # TODO: your code goes here
+  get "/activities" do
+    activities = DB.execute("SELECT * from activities;")
+    json "activities" => activities
+  end
 end
 
 namespace "/doc" do
