@@ -22,6 +22,10 @@ namespace "/v1" do
     activities = DB.execute("SELECT * from activities;")
     json "activities" => activities
   end
+  get "/activities/:activity_id" do
+    activity = DB.execute("SELECT * from activities WHERE id = #{params[:activity_id]}")
+    json "activity" => activity
+  end
 end
 
 namespace "/doc" do
