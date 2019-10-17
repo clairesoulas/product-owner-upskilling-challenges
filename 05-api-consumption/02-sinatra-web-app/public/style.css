@@ -42,7 +42,6 @@ h1 {
  .cards {
    display:flex;
    flex-wrap:wrap;
-   align-items: center;
    justify-content:center;
  }
  .card img{
@@ -69,6 +68,9 @@ h1 {
   margin: 0px;
   height:50px;
   border-bottom:solid 1px grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
  .chip {
   border-radius: 5px;
@@ -115,4 +117,6 @@ h1 {
 .label{
   font-family:arial;
   font-size:15px;
+  color:rgb(127, 127, 255);
+  font-weight: 700;
 }
