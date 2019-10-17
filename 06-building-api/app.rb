@@ -30,37 +30,35 @@ end
 namespace "/v2" do
   #Get all activities with filter (city as for now)
   get "/activities" do
-    #Retrieve parameters
+    # Retrieve parameters & check if there are any
     city = params["city"]
     category = params["category"]
-    name = params["name"].upcase
-    p name
-    #param = (city != nil) || (category != nil) || (name != nil)
-   # user_param = []
-    #if city != nil
-     # user_param << city
-    #elsif category != nil
-    #  user_param << category
-    #elsif name != nil
-    #  user_param << name
-    #else
-    #end
+    name = params["name"]
+
+    params = (city != nil) || (category != nil) || (name != nil)
+    user_params = []
+
+    if city != nil
+     user_params << "city = \"#{city}\""
+    end
+    if category != nil
+      user_params << "category = \"#{category}\""
+    end
+    if name != nil
+      user_params << "UPPER(name) LIKE \"%#{name.upcase}%\""
+    end
 
     query = "SELECT * FROM activities"
 
-    if (city != nil && category != nil && name != nil)
-      activities = DB.execute("#{query} WHERE city = \"#{city}\" AND category = \"#{category}\" AND UPPER(name) LIKE \"%#{name}%\";")
-    elsif name != nil
-      activities = DB.execute("#{query} WHERE UPPER(name) LIKE \"%#{name}%\";")
-    elsif category != nil
-      activities = DB.execute("#{query} WHERE category = \"#{category}\";")
-    elsif city != nil
-      activities = DB.execute("#{query} WHERE category = \"#{city}\";")
+    if (params == false)
+      activities = DB.execute("#{query};")
     else
+      query = query + " WHERE " + user_params.join(" AND ")
       activities = DB.execute("#{query};")
     end
     json "activities" => activities
   end
+
   #Get activity by id
   get "/activities/:activity_id" do
     activity = DB.execute("SELECT * from activities WHERE id = #{params[:activity_id]};")
