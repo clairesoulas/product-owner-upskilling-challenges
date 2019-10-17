@@ -17,13 +17,38 @@ get "/" do
 end
 
 namespace "/v1" do
-  # TODO: your code goes here
   get "/activities" do
     activities = DB.execute("SELECT * from activities;")
     json "activities" => activities
   end
   get "/activities/:activity_id" do
-    activity = DB.execute("SELECT * from activities WHERE id = #{params[:activity_id]}")
+    activity = DB.execute("SELECT * from activities WHERE id = #{params[:activity_id]};")
+    json "activity" => activity
+  end
+end
+
+namespace "/v2" do
+  #Get all activities with filter (city as for now)
+  get "/activities" do
+    #Retrieve parameters
+    city = params["city"]
+    category = params["category"]
+    #param = (city != nil) || (category != nil)
+
+    if (city != nil && category != nil)
+      activities = DB.execute("SELECT * FROM activities WHERE city = \"#{city}\" AND category = \"#{category}\";")
+    elsif category != nil
+      activities = DB.execute("SELECT * FROM activities WHERE category = \"#{category}\";")
+    elsif city != nil
+      activities = DB.execute("SELECT * FROM activities WHERE category = \"#{city}\";")
+    else
+      activities = DB.execute("SELECT * from activities;")
+    end
+    json "activities" => activities
+  end
+  #Get activity by id
+  get "/activities/:activity_id" do
+    activity = DB.execute("SELECT * from activities WHERE id = #{params[:activity_id]};")
     json "activity" => activity
   end
 end
