@@ -35,7 +35,7 @@ namespace "/v2" do
     category = params["category"]
     name = params["name"]
 
-    params = (city != nil) || (category != nil) || (name != nil)
+    has_params = (city != nil) || (category != nil) || (name != nil)
     user_params = []
 
     if city != nil
@@ -50,12 +50,19 @@ namespace "/v2" do
 
     query = "SELECT * FROM activities"
 
-    if (params == false)
-      activities = DB.execute("#{query};")
-    else
+    # if has_params == true
+    #   query << " WHERE #{user_params.join(" AND ")}"
+    # end
+
+    # query << " ORDER BY name ASC"
+
+    # activities = DB.execute(query)
+
+    if (has_params)
       query = query + " WHERE " + user_params.join(" AND ")
-      activities = DB.execute("#{query};")
     end
+    activities = DB.execute(query)
+
     json "activities" => activities
   end
 
