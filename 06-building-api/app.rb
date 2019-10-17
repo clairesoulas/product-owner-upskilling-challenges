@@ -33,16 +33,31 @@ namespace "/v2" do
     #Retrieve parameters
     city = params["city"]
     category = params["category"]
-    #param = (city != nil) || (category != nil)
+    name = params["name"].upcase
+    p name
+    #param = (city != nil) || (category != nil) || (name != nil)
+   # user_param = []
+    #if city != nil
+     # user_param << city
+    #elsif category != nil
+    #  user_param << category
+    #elsif name != nil
+    #  user_param << name
+    #else
+    #end
 
-    if (city != nil && category != nil)
-      activities = DB.execute("SELECT * FROM activities WHERE city = \"#{city}\" AND category = \"#{category}\";")
+    query = "SELECT * FROM activities"
+
+    if (city != nil && category != nil && name != nil)
+      activities = DB.execute("#{query} WHERE city = \"#{city}\" AND category = \"#{category}\" AND UPPER(name) LIKE \"%#{name}%\";")
+    elsif name != nil
+      activities = DB.execute("#{query} WHERE UPPER(name) LIKE \"%#{name}%\";")
     elsif category != nil
-      activities = DB.execute("SELECT * FROM activities WHERE category = \"#{category}\";")
+      activities = DB.execute("#{query} WHERE category = \"#{category}\";")
     elsif city != nil
-      activities = DB.execute("SELECT * FROM activities WHERE category = \"#{city}\";")
+      activities = DB.execute("#{query} WHERE category = \"#{city}\";")
     else
-      activities = DB.execute("SELECT * from activities;")
+      activities = DB.execute("#{query};")
     end
     json "activities" => activities
   end
