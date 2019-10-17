@@ -9,53 +9,54 @@
   </head>
 
   <body>
-  <div class="container">
+
     <div class="banner">
       <h1>Activities</h1>
       <h2>Au choix pour votre teambuilding</h2>
     </div>
-    <div class="flex space-around">
-        <form method="GET" action="/">
-          <p class="label">Search by activity name : <input type="text" name="name" value ="<%= @name_searched %>">
-          </p>
-          <p class="label">Category:
-            <select name="category">
-              <% @categories.each do |category|%>
-                <option value="<%= category%>" <%= "selected" if category == @selected_category %>>
-                  <%= category %>
-                </option>
-              <% end %>
-            </select>
-          </p>
-          <P class="label">Filter by city
-            <input type ="radio" id="Paris" name="location" value="Paris" <%= "checked" if @selected_location =="Paris" %>>
-            <label for="Paris">Paris</label>
-            <input type ="radio" id="Nantes" name="location" value="Nantes" <%= "checked" if @selected_location =="Nantes" %>>
-            <label for="Nantes">Nantes</label>
-            <input type ="radio" id="All" name="location" value="" <%= "checked" if @selected_location =="" %>>
-            <label for="All">Tous les lieux</label>
-          </p>
-          <p><input class="btn" type="submit" value="Apply filters"></p>
-        </form>
-    </div>
-    <div class="cards">
-      <% @activities.each do |activity| %>
-        <div class="card">
-          <div class="header">
-            <h3><%= activity["name"] %></h3>
+    <div class="container">
+      <div class="flex space-around">
+          <form method="GET" action="/">
+            <p class="label">Search by activity name : <input type="text" name="name" value ="<%= @name_searched %>">
+            </p>
+            <p class="label">Category:
+              <select name="category">
+                <% @categories.each do |category|%>
+                  <option value="<%= category%>" <%= "selected" if category == @selected_category %>>
+                    <%= category %>
+                  </option>
+                <% end %>
+              </select>
+            </p>
+            <P class="label">Filter by city
+              <input type ="radio" id="Paris" name="location" value="Paris" <%= "checked" if @selected_location =="Paris" %>>
+              <label for="Paris">Paris</label>
+              <input type ="radio" id="Nantes" name="location" value="Nantes" <%= "checked" if @selected_location =="Nantes" %>>
+              <label for="Nantes">Nantes</label>
+              <input type ="radio" id="All" name="location" value="" <%= "checked" if @selected_location =="" %>>
+              <label for="All">Tous les lieux</label>
+            </p>
+            <p><input class="btn" type="submit" value="Apply filters"></p>
+          </form>
+      </div>
+      <div class="cards">
+        <% @activities.each do |activity| %>
+          <div class="card">
+            <div class="header">
+              <h3><%= activity["name"] %></h3>
+            </div>
+            <p class="chip"><%= activity["category"].upcase %></p>
+            <img src="<%= activity["photo_url"]%>"/>
+            <div class="flex center space-between">
+              <p><%= activity["city"] %></p>
+              <p class="right"><%= activity["price"] %> euros</p>
+            </div>
+            <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</p>
+            <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2016/06/13/07/59/pi-1453836__340.jpg" alt="Number of participants icon"/><%= activity["participants_count"] %> participants</p>
+            <p class="right btn"><a href="activities/<%=activity["id"]%>">View</a></p>
           </div>
-          <p class="chip"><%= activity["category"].upcase %></p>
-          <img src="<%= activity["photo_url"]%>"/>
-          <div class="flex center space-between">
-            <p><%= activity["city"] %></p>
-            <p class="right"><%= activity["price"] %> euros</p>
-          </div>
-          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["duration"] %> minutes</p>
-          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= activity["participants_count"] %> participants</p>
-          <p class="right btn"><a href="activities/<%=activity["id"]%>">View</a></p>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
   </body>
 </html>
