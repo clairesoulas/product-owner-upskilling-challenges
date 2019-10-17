@@ -11,6 +11,7 @@ h1 {
     font-size:40px;
     padding-left:10px;
     text-align:center;
+    color:rgb(127, 127, 255);
   }
 
   h2 {
@@ -27,6 +28,11 @@ h1 {
   }
   .container {
     width:1200px;
+    margin:0 auto;
+  }
+
+  .small-container{
+    width:900px;
     margin:0 auto;
   }
 .banner{
@@ -75,7 +81,7 @@ h1 {
   border-radius: 5px;
   background-color:rgb(127, 127, 255);
   width: fit-content;
-  padding:5px;
+  padding:8px;
   font-weight:700;
   font-size:14px;
   margin-top: -15px;
@@ -101,6 +107,9 @@ h1 {
 .space-around{
   justify-content:space-around;
 }
+.columns{
+  flex-direction:column;
+}
 .right{
  float:right;
 }
@@ -113,11 +122,26 @@ h1 {
   background-color:rgb(127, 127, 255);
   border-radius:5px;
   color:white;
+  padding:10px;
+}
+.btn-grey{
+  background-color:grey;
+  border-radius:5px;
+  color:white;
   padding:5px;
+  font-weight:500;
 }
 .label{
   font-family:arial;
   font-size:15px;
-  color:rgb(127, 127, 255);
   font-weight: 700;
+}
+.purple{
+  color:rgb(127, 127, 255);
+}
+.box{
+  width:900px;
+}
+.hidden{
+  display:none;
 }

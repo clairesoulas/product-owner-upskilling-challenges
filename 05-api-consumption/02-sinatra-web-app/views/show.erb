@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><%= @activity["name"]%>Team Building - Activities</title>
+    <title><%= @activity["name"]%></title>
     <%= stylesheet '/style.css' %>
   </head>
 
   <body>
-    <div class="container">
-      <div>
+    <div class="small-container">
+      <div class="flex center columns">
         <h1><%= @activity["name"]%></h1>
-         <img src="<%= @activity["photo_url"]%>"/>
-        <h2>Activité <%= @activity["category"] %> disponible à <%= @activity["city"] %></h2>
-          <div class="flex center space-between">
-            <p><%= @activity["city"] %></p>
-            <p class="right"><%= @activity["price"] %> euros</p>
-          </div>
-          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= @activity["duration"] %> minutes</p>
-          <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="duration"/><%= @activity["participants_count"] %> participants</p>
+        <p class="chip"><%= @activity["category"] %></p>
+        <img class="box" src="<%= @activity["photo_url"]%>"/>
       </div>
+      <div class="flex center space-between">
+        <p><%= @activity["city"] %></p>
+        <p class="right"><%= @activity["price"] %> euros</p>
+      </div>
+      <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2015/11/07/11/48/clock-1031503__340.jpg" alt="Duration in minutes"/><%= @activity["duration"] %> minutes</p>
+      <p class="flex center"><img class="icon" src="https://cdn.pixabay.com/photo/2016/06/13/07/59/pi-1453836__340.jpg" alt="Number of participants"/><%= @activity["participants_count"] %> participants</p>
     </div>
   </body>
 </html>
