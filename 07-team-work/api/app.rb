@@ -72,9 +72,32 @@ namespace "/v2" do
   get "/activities/:id" do
     id         = params["id"].to_i
     activities = DB.execute("SELECT * FROM activities WHERE id = ?", id)
+    #TODO : add list of (sites & favorites) in response
     activity   = activities.first
 
     json "activity" => activity
+  end
+
+  post "/wishlist" do
+    # Récupérer les params user
+    site_id         = params["site_id"]
+    activity_id = params["activity_id"]
+
+    if (site_id == nil || activity_id == nil)
+      status_code = 400 # Missing parameter
+      message = "Missing parameter : expecting both site_id and activity_id"
+    else
+      # TODO Check if data already in database
+
+
+      # Insérer la donnée en base
+
+     # DB.execute("INSERT INTO site_favorite_activities (site_id, activity_id) VALUES ('#{site_id}', '#{activity_id}');")
+      status_code = 201
+      message = "Entry created for wishlist"
+    end
+    json "response" => {"code": status_code, "message": message}
+    # TODO : code reponse 201 ou 200    json "activity" => activity
   end
 end
 
