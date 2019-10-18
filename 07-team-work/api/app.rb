@@ -80,7 +80,7 @@ namespace "/v2" do
 
   post "/wishlist" do
     # Récupérer les params user
-    site_id         = params["site_id"]
+    site_id = params["site_id"]
     activity_id = params["activity_id"]
 
     if (site_id == nil || activity_id == nil)
@@ -88,13 +88,17 @@ namespace "/v2" do
       message = "Missing parameter : expecting both site_id and activity_id"
     else
       # TODO Check if data already in database
-
-
+      wished_id = DB.execute("SELECT id from site_favorite_activities WHERE site_id = '#{site_id}' AND activity_id = '#{activity_id}';")
+      p wished_id.class
       # Insérer la donnée en base
-
-     # DB.execute("INSERT INTO site_favorite_activities (site_id, activity_id) VALUES ('#{site_id}', '#{activity_id}');")
-      status_code = 201
-      message = "Entry created for wishlist"
+      if (wished_id.first == nil)
+        DB.execute("INSERT INTO site_favorite_activities (site_id, activity_id) VALUES ('#{site_id}', '#{activity_id}');")
+       status_code = 201
+       message = "Entry created for wishlist"
+      else
+        status_code = 418
+        message = "I'm a teapot"
+      end
     end
     json "response" => {"code": status_code, "message": message}
     # TODO : code reponse 201 ou 200    json "activity" => activity
