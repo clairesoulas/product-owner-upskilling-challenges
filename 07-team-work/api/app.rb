@@ -72,10 +72,38 @@ namespace "/v2" do
   get "/activities/:id" do
     id         = params["id"].to_i
     activities = DB.execute("SELECT * FROM activities WHERE id = ?", id)
-    #TODO : add list of (sites & favorites) in response
+
     activity   = activities.first
+     #TODO : add list of (sites & favorites) in response
+#    sites_as_favorite = DB.execute("SELECT sites.id FROM sites left outer join site_favorite_activities on site_favorite_activities.site_id = sites.id WHERE site_favorite_activities.activity_id = ?", id)
+
+
+    query = <<~SQL
+      SELECT
+        sites.id,
+        sites.name,
+        CASE
+          WHEN site_favorite_activities.id IS NULL THEN false
+          ELSE true
+        END AS is_favorite
+      FROM sites
+      left outer join site_favorite_activities on site_favorite_activities.site_id = sites.id AND site_favorite_activities.activity_id = #{id}
+    SQL
+
+    favorites = DB.execute(query)
+
+    favorites.each do |favorite|
+      if(favorite["is_favorite"]==0)
+        favorite["is_favorite"] = false
+      else
+        favorite["is_favorite"] = true
+      end
+    end
+
+    activity["favorites"] = favorites
 
     json "activity" => activity
+
   end
 
   post "/wishlist" do
@@ -89,7 +117,7 @@ namespace "/v2" do
     else
       # TODO Check if data already in database
       wished_id = DB.execute("SELECT id from site_favorite_activities WHERE site_id = '#{site_id}' AND activity_id = '#{activity_id}';")
-      p wished_id.class
+
       # Insérer la donnée en base
       if (wished_id.first == nil)
         DB.execute("INSERT INTO site_favorite_activities (site_id, activity_id) VALUES ('#{site_id}', '#{activity_id}');")
