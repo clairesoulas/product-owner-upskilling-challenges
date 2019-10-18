@@ -118,6 +118,7 @@
 
 <p>
   This endpoint retrieves the details of one specific activity.
+  You also get the list of all sites (id an name) with the information wether the activity is favorite for this site.
 </p>
 
 <h3>Endpoint</h3>
@@ -143,6 +144,18 @@
     "duration": 120,
     "participants_count": 18,
     "price": 342,
-    "photo_url": "http://rdvludique.fr/wp-content/uploads/2016/03/Parcours-et-plateforme-4.jpg"
+    "photo_url": "http://rdvludique.fr/wp-content/uploads/2016/03/Parcours-et-plateforme-4.jpg",
+    "is_favorite_for_sites":[
+      {
+        "site_id":"1",
+        "site_name":"Paris",
+        "is_favorite":true
+      },
+      {
+        "site_id":"2",
+        "site_name":"Nantes",
+        "is_favorite":false
+     }
+    ]
   }
 }</code></pre>
